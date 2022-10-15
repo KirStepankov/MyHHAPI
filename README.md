@@ -24,6 +24,8 @@ $oauth = new OAuthForApplication();
 $token = $oauth->getAccessToken();
 var_dump($token);
 ```
+
+______
 ### Получуние конкретной вакансии по id
 Вызываем фабрику
 ```php
@@ -46,7 +48,7 @@ $service->setQueryFields([
 $data = $service->getData();
 var_dump($data);
 ```
-
+______
 ### Получуние вакансий по условиям
 Вызываем фабрику
 ```php
@@ -58,7 +60,7 @@ $factory = new MyHHAPIFactory();
 ```php
 $service = $factory->getService('vacancies');
 ```
-Заполняем объект обязательными и необязательными параметрами
+Заполняем объект обязательными и необязательными [параметрами](https://github.com/hhru/api/blob/master/docs/vacancies.md#%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81)
 ```php
 $service->setQueryFields([
     'text' => 'Java',
