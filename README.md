@@ -34,7 +34,7 @@ use MyHHAPI\MyHHAPIFactory;
 $factory = new MyHHAPIFactory();
 ```
 В метод getService необходимо передать id сервиса. Все сервиси
-описаны в п **"Список всех сервисов"**
+описаны в п [**"Список всех сервисов"**](https://github.com/KirStepankov/MyHHAPI#%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%B2%D1%81%D0%B5%D1%85-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
 ```php
 $service = $factory->getService('vacancy');
 ```
@@ -57,7 +57,7 @@ use MyHHAPI\MyHHAPIFactory;
 $factory = new MyHHAPIFactory();
 ```
 В метод getService необходимо передать id сервиса. Все сервиси
-описаны в п **"Список всех сервисов"**
+описаны в п [**"Список всех сервисов"**](https://github.com/KirStepankov/MyHHAPI#%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%B2%D1%81%D0%B5%D1%85-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
 ```php
 $service = $factory->getService('vacancies');
 ```
