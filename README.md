@@ -11,7 +11,8 @@ HH, которые описанны в офф документации.
 
 # Список всех сервисов
 :heavy_exclamation_mark: Ссылки ведут на доку HH
-- vacancy ([Поиск резюме](https://github.com/hhru/api/blob/master/docs/resumes_search.md))
+- vacancy ([Поиск резюме по id](https://github.com/hhru/api/blob/master/docs/vacancies.md#%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B8))
+- vacancies ([Поиск вакансии по условиям](https://github.com/hhru/api/blob/master/docs/vacancies.md#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BF%D0%BE-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%D0%BC))
 
 # Документация
 
