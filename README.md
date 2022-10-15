@@ -37,9 +37,31 @@ $service = $factory->getService('vacancy');
 ```
 Заполняем объект обязательными и необязательными параметрами
 ```php
-$service->setRequiredFields([
+$service->setQueryFields([
     'idVacancy' => 00000000,
-    'accessToken' => ''
+]);
+```
+Выводим полученные данные от АПИ
+```php
+$data = $service->getData();
+var_dump($data);
+```
+
+### Получуние вакансий по условиям
+Вызываем фабрику
+```php
+use MyHHAPI\MyHHAPIFactory;
+$factory = new MyHHAPIFactory();
+```
+В метод getService необходимо передать id сервиса. Все сервиси
+описаны в п **"Список всех сервисов"**
+```php
+$service = $factory->getService('vacancies');
+```
+Заполняем объект обязательными и необязательными параметрами
+```php
+$service->setQueryFields([
+    'text' => 'Java',
 ]);
 ```
 Выводим полученные данные от АПИ

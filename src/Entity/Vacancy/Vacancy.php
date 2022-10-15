@@ -5,64 +5,53 @@ namespace MyHHAPI\Entity\Vacancy;
 use Curl\Curl;
 use Exception;
 use MyHHAPI\Contract\MyHHAPIContract;
+use MyHHAPI\Contract\MyHHAPIModelContract;
 use MyHHAPI\Entity\Helpers\Helper;
 use MyHHAPI\MyHHAPIAbstract;
 
-class Vacancy extends MyHHAPIAbstract implements MyHHAPIContract
+class Vacancy extends VacancyPropsAbstract implements MyHHAPIContract
 {
+    /**
+     * @var string
+     */
+    protected string $method = 'vacancies';
+
+    /**
+     * @var array|string[]
+     */
     protected array $requiredFields = [
         'idVacancy'
     ];
-
-    private string $method = 'vacancies';
-
-    public function __construct()
-    {
-        //$this->requiredFields[] = 'accessToken';
-    }
-
-    /**
-     * @var int
-     */
-    protected int $idVacancy;
 
     /**
      * @return array
      */
     public function getData(): array
     {
-        return $this->response();
+        return $this->responseWithGET();
     }
 
     /**
-     * @return array
+     * @return string
      */
-    private function response(): array
+    protected function getBuildUrl(): string
     {
-        try {
-            $response = $this->request();
-
-            $model = new VacancyModel();
-            $model->mapFields($response);
-
-            return Helper::returnResponse($model);
-        } catch (Exception $e) {
-            return Helper::returnResponse($e);
-        }
+        return "{$_ENV['BASE_API']}$this->method/$this->idVacancy";
     }
 
     /**
-     * @throws Exception
+     * @return array|string[]
      */
-    private function request(): array
+    protected function getRequiredFields(): array
     {
-        $url = "{$_ENV['BASE_API']}$this->method/$this->idVacancy";
-        $curl = new Curl();
-        $curl->setHeader('User-Agent', $_ENV['BASE_USER_AGENT']);
-        $curl->get($url);
+        return $this->requiredFields;
+    }
 
-        return $curl->error
-            ? throw new Exception("Ошибка при запросе в АПИ HH: $curl->error_code")
-            : json_decode($curl->response, true);
+    /**
+     * @return MyHHAPIModelContract
+     */
+    protected function getModel(): MyHHAPIModelContract
+    {
+        return new VacancyModel();
     }
 }
