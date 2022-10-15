@@ -62,8 +62,6 @@ abstract class MyHHAPIAbstract
     {
         try {
             $url = $this->getBuildUrl();
-            echo $url . PHP_EOL;
-            die;
             $response = $this->requestWithGET($url);
             $model = $this->getModel();
             $model->mapFields($response);
