@@ -5,9 +5,8 @@ use MyHHAPI\MyHHAPIFactory;
 $factory = new MyHHAPIFactory();
 $service = $factory->getService('vacancy');
 
-$service->setRequiredFields([
+$service->setQueryFields([
     'idVacancy' => 70394655,
-    'accessToken' => ''
 ]);
 
 $data = $service->getData();
