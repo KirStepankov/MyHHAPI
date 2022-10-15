@@ -1,4 +1,22 @@
 {
+    "name": "seregazhuk/headhunter-api",
+    "description": "PHP library to interact with hh.ru API",
+    "keywords": [
+        "php",
+        "api",
+        "hh",
+        "headhunter"
+    ],
+    "type": "package",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Степанков Кирилл",
+            "email": "dev-stepankoff@mail.ru",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "MyHHAPI\\": "src/"
