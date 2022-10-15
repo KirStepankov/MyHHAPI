@@ -1,5 +1,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/745476ed0324828def23/maintainability)](https://codeclimate.com/github/KirStepankov/MyHHAPI/maintainability)
 <a href="https://codeclimate.com/github/KirStepankov/MyHHAPI/test_coverage"><img src="https://api.codeclimate.com/v1/badges/745476ed0324828def23/test_coverage" /></a>
+
+<pre>
+composer require kirstepankov/myhhapi
+</pre>
 #### :octocat: Ведётся разработка новых сервисов! Список будет пополняться со временем
 
 # MyHHAPI
