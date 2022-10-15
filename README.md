@@ -38,7 +38,7 @@ $factory = new MyHHAPIFactory();
 ```php
 $service = $factory->getService('vacancy');
 ```
-Заполняем объект обязательными и необязательными параметрами
+В объект добавляем id вакансии с ключом `idVacancy`
 ```php
 $service->setQueryFields([
     'idVacancy' => 00000000,
