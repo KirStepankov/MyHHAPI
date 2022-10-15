@@ -1,6 +1,6 @@
 <?php
 
-namespace MyHHAPI\Entity\VacanciesSimilar;
+namespace MyHHAPI\Entity\Vacancies\VacanciesSimilar;
 
 use MyHHAPI\MyHHAPIAbstract;
 

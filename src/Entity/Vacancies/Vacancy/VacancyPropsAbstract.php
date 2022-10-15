@@ -1,6 +1,6 @@
 <?php
 
-namespace MyHHAPI\Entity\Vacancy;
+namespace MyHHAPI\Entity\Vacancies\Vacancy;
 
 use MyHHAPI\MyHHAPIAbstract;
 

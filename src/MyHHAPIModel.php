@@ -2,7 +2,9 @@
 
 namespace MyHHAPI;
 
-abstract class MyHHAPIModelAbstract
+use MyHHAPI\Contract\MyHHAPIModelContract;
+
+class MyHHAPIModel implements MyHHAPIModelContract
 {
     /**
      * @param array $response

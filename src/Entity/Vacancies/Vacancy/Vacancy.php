@@ -1,13 +1,8 @@
 <?php
 
-namespace MyHHAPI\Entity\Vacancy;
+namespace MyHHAPI\Entity\Vacancies\Vacancy;
 
-use Curl\Curl;
-use Exception;
 use MyHHAPI\Contract\MyHHAPIContract;
-use MyHHAPI\Contract\MyHHAPIModelContract;
-use MyHHAPI\Entity\Helpers\Helper;
-use MyHHAPI\MyHHAPIAbstract;
 
 class Vacancy extends VacancyPropsAbstract implements MyHHAPIContract
 {
@@ -45,13 +40,5 @@ class Vacancy extends VacancyPropsAbstract implements MyHHAPIContract
     protected function getRequiredFields(): array
     {
         return $this->requiredFields;
-    }
-
-    /**
-     * @return MyHHAPIModelContract
-     */
-    protected function getModel(): MyHHAPIModelContract
-    {
-        return new VacancyModel();
     }
 }

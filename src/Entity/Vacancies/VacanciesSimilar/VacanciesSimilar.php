@@ -1,9 +1,8 @@
 <?php
 
-namespace MyHHAPI\Entity\VacanciesSimilar;
+namespace MyHHAPI\Entity\Vacancies\VacanciesSimilar;
 
 use MyHHAPI\Contract\MyHHAPIContract;
-use MyHHAPI\Contract\MyHHAPIModelContract;
 
 class VacanciesSimilar extends VacanciesSimilarPropsAbstract implements MyHHAPIContract
 {
@@ -22,11 +21,6 @@ class VacanciesSimilar extends VacanciesSimilarPropsAbstract implements MyHHAPIC
     protected function getRequiredFields(): array
     {
         return $this->requiredFields;
-    }
-
-    protected function getModel(): MyHHAPIModelContract
-    {
-        return new VacanciesSimilarModel();
     }
 
     protected function getBuildUrl(): string

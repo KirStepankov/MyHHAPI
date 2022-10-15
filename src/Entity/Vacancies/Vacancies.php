@@ -27,11 +27,6 @@ class Vacancies extends VacanciesPropsAbstract implements MyHHAPIContract
         return $this->requiredFields;
     }
 
-    protected function getModel(): MyHHAPIModelContract
-    {
-        return new VacanciesModel();
-    }
-
     protected function getBuildUrl(): string
     {
         $url = "{$_ENV['BASE_API']}$this->method";

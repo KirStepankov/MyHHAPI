@@ -9,20 +9,22 @@ use MyHHAPI\Entity\Helpers\Helper;
 
 abstract class MyHHAPIAbstract
 {
+    private MyHHAPIModel $model;
+
     /**
      * @return array
      */
     abstract protected function getRequiredFields(): array;
 
     /**
-     * @return MyHHAPIModelContract
-     */
-    abstract protected function getModel(): MyHHAPIModelContract;
-
-    /**
      * @return string
      */
     abstract protected function getBuildUrl(): string;
+
+    public function __construct()
+    {
+        $this->model = new MyHHAPIModel();
+    }
 
     /**
      * @param array $fields
@@ -63,10 +65,9 @@ abstract class MyHHAPIAbstract
         try {
             $url = $this->getBuildUrl();
             $response = $this->requestWithGET($url);
-            $model = $this->getModel();
-            $model->mapFields($response);
+            $this->model->mapFields($response);
 
-            return Helper::returnResponse($model);
+            return Helper::returnResponse($this->model);
         } catch (Exception $e) {
             return Helper::returnResponse($e);
         }
