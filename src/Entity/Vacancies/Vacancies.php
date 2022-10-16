@@ -38,17 +38,9 @@ class Vacancies extends VacanciesPropsAbstract implements MyHHAPIContract
         return $url;
     }
 
-
-    private function getQuery(): string
-    {
-        return $this->formattedQueryArr(
-            $this->arrQuery()
-        );
-    }
-
     //TODO Реализовать передачу координат
     // top_lat, bottom_lat, left_lng, right_lng, sort_point_lat, sort_point_lng
-    private function arrQuery(): array
+    protected function arrQuery(): array
     {
         $arr = [
             'text' => $this->getText(),
@@ -81,42 +73,5 @@ class Vacancies extends VacanciesPropsAbstract implements MyHHAPIContract
         ];
 
         return $this->arrayClear($arr);
-    }
-
-    private function arrayClear($arr)
-    {
-        foreach ($arr as $key => $item) {
-            if ($item == 0) {
-                unset($arr[$key]);
-            }
-
-            if ($item == '') {
-                unset($arr[$key]);
-            }
-        }
-
-        return $arr;
-    }
-
-    /**
-     * @param $arr
-     * @return string
-     *
-     * Некоторые параметры принимают множественные значения: key=value&key=value.
-     */
-    private function formattedQueryArr($arr): string
-    {
-        $query = '';
-        foreach ($arr as $key => $item) {
-            if (!is_array($item)) {
-                $query .= "&$key=$item";
-                continue;
-            }
-
-            foreach ($item as $value) {
-                $query .= "&$key=$value";
-            }
-        }
-        return $query;
     }
 }

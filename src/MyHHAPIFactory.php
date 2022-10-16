@@ -3,6 +3,7 @@
 namespace MyHHAPI;
 
 use MyHHAPI\Contract\MyHHAPIContract;
+use MyHHAPI\Entity\Employers\Employers;
 use MyHHAPI\Entity\Resume\Resume;
 use MyHHAPI\Entity\Vacancies\Vacancies;
 use MyHHAPI\Entity\Vacancies\VacanciesSimilar\VacanciesSimilar;
@@ -15,8 +16,8 @@ class MyHHAPIFactory
         $service = match ($type) {
             'vacancy' => new Vacancy(),
             'vacancies' => new Vacancies(),
-            'resume' => new Resume(),
             'vacanciesSimilar' => new VacanciesSimilar(),
+            'employers' => new Employers(),
             default => false,
         };
 

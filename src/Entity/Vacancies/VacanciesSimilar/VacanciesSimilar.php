@@ -33,4 +33,12 @@ class VacanciesSimilar extends VacanciesSimilarPropsAbstract implements MyHHAPIC
     {
         return $this->responseWithGET();
     }
+
+    /**
+     * @return array
+     */
+    protected function arrQuery(): array
+    {
+        return [];
+    }
 }

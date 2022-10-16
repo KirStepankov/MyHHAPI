@@ -41,4 +41,12 @@ class Vacancy extends VacancyPropsAbstract implements MyHHAPIContract
     {
         return $this->requiredFields;
     }
+
+    /**
+     * @return array
+     */
+    protected function arrQuery(): array
+    {
+        return [];
+    }
 }
