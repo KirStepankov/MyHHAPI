@@ -26,7 +26,7 @@ class VacanciesSimilar extends VacanciesSimilarPropsAbstract implements MyHHAPIC
     protected function getBuildUrl(): string
     {
         $method = str_replace('{vacancy_id}', $this->idVacancy, $this->method);
-        return "{$_ENV['BASE_API']}$method";
+        return "$method";
     }
 
     public function getData(): array

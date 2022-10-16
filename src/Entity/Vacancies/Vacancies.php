@@ -29,13 +29,11 @@ class Vacancies extends VacanciesPropsAbstract implements MyHHAPIContract
 
     protected function getBuildUrl(): string
     {
-        $url = "{$_ENV['BASE_API']}$this->method";
-
         if (!empty($this->getQuery())) {
-            $url .= "/?{$this->getQuery()}";
+            $this->method .= "/?{$this->getQuery()}";
         }
 
-        return $url;
+        return $this->method;
     }
 
     //TODO Реализовать передачу координат

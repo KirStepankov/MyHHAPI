@@ -23,6 +23,7 @@ HH, которые описанны в офф документации.
 - [Получение похожих вакансий относительно другой вакансии](https://github.com/KirStepankov/MyHHAPI#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D1%83%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B8%D1%85-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B9)
 - [Поиск работодателей по параметрам](https://github.com/KirStepankov/MyHHAPI#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BE%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F)
 - [Поиск работодателя по id](https://github.com/KirStepankov/MyHHAPI#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BE%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F-%D0%BF%D0%BE-id)
+- [Получение всех спициальностей]()
 
 # Список всех сервисов
 :heavy_exclamation_mark: Ссылки ведут на доку HH
@@ -30,7 +31,8 @@ HH, которые описанны в офф документации.
 - vacancies ([Поиск вакансии по условиям](https://github.com/hhru/api/blob/master/docs/vacancies.md#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BF%D0%BE-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%D0%BC))
 - vacanciesSimilar ([Поисх похожих вакансий](https://github.com/hhru/api/blob/master/docs/vacancies.md#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BF%D0%BE-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8F%D0%BC-%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B8%D0%BC-%D0%BD%D0%B0-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D1%8E))
 - employers ([Поиск работодателя](https://api.hh.ru/openapi/redoc#tag/Rabotodatel/paths/~1employers/get))
-- employer([Поиск работодателя по id](https://api.hh.ru/openapi/redoc#tag/Rabotodatel/paths/~1employers~1%7Bemployer_id%7D/get))
+- employer ([Поиск работодателя по id](https://api.hh.ru/openapi/redoc#tag/Rabotodatel/paths/~1employers~1%7Bemployer_id%7D/get))
+- specializations ([Специализации](https://github.com/hhru/api/blob/master/docs/specializations.md))
 
 # Документация
 
@@ -156,6 +158,23 @@ $service->setQueryFields([
     'locale' => 'EN',
     'host' => 'hh.kz'
 ]);
+```
+Выводим полученные данные от АПИ
+```php
+$data = $service->getData();
+var_dump($data);
+```
+______
+### Получение всех специальностей
+Вызываем фабрику
+```php
+use MyHHAPI\MyHHAPIFactory;
+$factory = new MyHHAPIFactory();
+```
+В метод `getService` необходимо передать id сервиса. Все сервиси
+описаны в п [**"Список всех сервисов"**](https://github.com/KirStepankov/MyHHAPI#%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%B2%D1%81%D0%B5%D1%85-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
+```php
+$service = $factory->getService('specializations');
 ```
 Выводим полученные данные от АПИ
 ```php

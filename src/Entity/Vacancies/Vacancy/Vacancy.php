@@ -31,7 +31,7 @@ class Vacancy extends VacancyPropsAbstract implements MyHHAPIContract
      */
     protected function getBuildUrl(): string
     {
-        return "{$_ENV['BASE_API']}$this->method/$this->idVacancy";
+        return "$this->method/$this->idVacancy";
     }
 
     /**

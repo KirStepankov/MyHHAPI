@@ -29,13 +29,11 @@ class Employers extends EmployersPropsAbstract implements MyHHAPIContract
      */
     protected function getBuildUrl(): string
     {
-        $url = "{$_ENV['BASE_API']}$this->method";
-
         if (!empty($this->getQuery())) {
-            $url .= "/?{$this->getQuery()}";
+            $this->method .= "/?{$this->getQuery()}";
         }
 
-        return $url;
+        return $this->method;
     }
 
     /**
