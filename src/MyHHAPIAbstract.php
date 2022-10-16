@@ -21,6 +21,11 @@ abstract class MyHHAPIAbstract
      */
     abstract protected function getBuildUrl(): string;
 
+    /**
+     * @return array
+     */
+    abstract protected function arrQuery(): array;
+
     public function __construct()
     {
         $this->model = new MyHHAPIModel();
@@ -85,5 +90,54 @@ abstract class MyHHAPIAbstract
         return $curl->error
             ? throw new Exception("Ошибка при запросе в АПИ HH: $curl->error_code")
             : json_decode($curl->response, true);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getQuery(): string
+    {
+        $url = $this->formattedQueryArr(
+            $this->arrQuery()
+        );
+
+        return urlencode($url);
+    }
+
+    protected function arrayClear($arr)
+    {
+        foreach ($arr as $key => $item) {
+            if ($item == 0) {
+                unset($arr[$key]);
+            }
+
+            if ($item == '') {
+                unset($arr[$key]);
+            }
+        }
+
+        return $arr;
+    }
+
+    /**
+     * @param $arr
+     * @return string
+     *
+     * Некоторые параметры принимают множественные значения: key=value&key=value.
+     */
+    protected function formattedQueryArr($arr): string
+    {
+        $query = '';
+        foreach ($arr as $key => $item) {
+            if (!is_array($item)) {
+                $query .= "&$key=$item";
+                continue;
+            }
+
+            foreach ($item as $value) {
+                $query .= "&$key=$value";
+            }
+        }
+        return $query;
     }
 }
