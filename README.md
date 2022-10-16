@@ -22,7 +22,7 @@ HH, которые описанны в офф документации.
 - [Получение нескольких вакансий по условиям](https://github.com/KirStepankov/MyHHAPI#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D1%83%D0%BD%D0%B8%D0%B5-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B9-%D0%BF%D0%BE-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F%D0%BC)
 - [Получение похожих вакансий относительно другой вакансии](https://github.com/KirStepankov/MyHHAPI#%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D1%83%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B8%D1%85-%D0%B2%D0%B0%D0%BA%D0%B0%D0%BD%D1%81%D0%B8%D0%B9)
 - [Поиск работодателей по параметрам](https://github.com/KirStepankov/MyHHAPI#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BE%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F)
-- [Поиск работодателя по id]()
+- [Поиск работодателя по id](https://github.com/KirStepankov/MyHHAPI#%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BE%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8F-%D0%BF%D0%BE-id)
 
 # Список всех сервисов
 :heavy_exclamation_mark: Ссылки ведут на доку HH
@@ -152,7 +152,7 @@ $service = $factory->getService('employer');
 В объект добавляем нужные [параметры](https://api.hh.ru/openapi/redoc#tag/Rabotodatel/paths/~1employers/get). Причём `employer_id` является обязательным, а другие поля нет
 ```php
 $service->setQueryFields([
-    'employer_id' => 4699646,
+    'employer_id' => 0000000,
     'locale' => 'EN',
     'host' => 'hh.kz'
 ]);
