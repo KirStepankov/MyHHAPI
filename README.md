@@ -33,6 +33,7 @@ HH, которые описанны в офф документации.
 - employers ([Поиск работодателя](https://api.hh.ru/openapi/redoc#tag/Rabotodatel/paths/~1employers/get))
 - employer ([Поиск работодателя по id](https://api.hh.ru/openapi/redoc#tag/Rabotodatel/paths/~1employers~1%7Bemployer_id%7D/get))
 - specializations ([Специализации](https://github.com/hhru/api/blob/master/docs/specializations.md))
+- industries ([Отрасли компаний](https://api.hh.ru/openapi/redoc#tag/Obshie-spravochniki/paths/~1industries/get))
 
 # Документация
 
@@ -175,6 +176,23 @@ $factory = new MyHHAPIFactory();
 описаны в п [**"Список всех сервисов"**](https://github.com/KirStepankov/MyHHAPI#%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%B2%D1%81%D0%B5%D1%85-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
 ```php
 $service = $factory->getService('specializations');
+```
+Выводим полученные данные от АПИ
+```php
+$data = $service->getData();
+var_dump($data);
+```
+______
+### Получение всех отраслей компаний
+Вызываем фабрику
+```php
+use MyHHAPI\MyHHAPIFactory;
+$factory = new MyHHAPIFactory();
+```
+В метод `getService` необходимо передать id сервиса. Все сервиси
+описаны в п [**"Список всех сервисов"**](https://github.com/KirStepankov/MyHHAPI#%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%B2%D1%81%D0%B5%D1%85-%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D0%BE%D0%B2)
+```php
+$service = $factory->getService('industries');
 ```
 Выводим полученные данные от АПИ
 ```php
