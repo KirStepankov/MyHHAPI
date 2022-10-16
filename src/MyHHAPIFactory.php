@@ -3,6 +3,7 @@
 namespace MyHHAPI;
 
 use MyHHAPI\Contract\MyHHAPIContract;
+use MyHHAPI\Entity\Directories\Specializations\Specializations;
 use MyHHAPI\Entity\Employers\Employer\Employer;
 use MyHHAPI\Entity\Employers\Employers;
 use MyHHAPI\Entity\Resume\Resume;
@@ -20,6 +21,7 @@ class MyHHAPIFactory
             'vacanciesSimilar' => new VacanciesSimilar(),
             'employers' => new Employers(),
             'employer' => new Employer(),
+            'specializations' => new Specializations(),
             default => false,
         };
 
