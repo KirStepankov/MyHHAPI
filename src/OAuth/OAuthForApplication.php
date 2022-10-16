@@ -8,6 +8,41 @@ use MyHHAPI\Entity\Helpers\Helper;
 
 class OAuthForApplication
 {
+    private string $grant_type;
+    private string $client_id;
+    private string $client_secret;
+
+    /**
+     * @param string $grant_type
+     * @return OAuthForApplication
+     */
+    public function setGrantType(string $grant_type): OAuthForApplication
+    {
+        $this->grant_type = $grant_type;
+        return $this;
+    }
+
+    /**
+     * @param string $client_id
+     * @return OAuthForApplication
+     */
+    public function setClientId(string $client_id): OAuthForApplication
+    {
+        $this->client_id = $client_id;
+        return $this;
+    }
+
+    /**
+     * @param string $client_secret
+     * @return OAuthForApplication
+     */
+    public function setClientSecret(string $client_secret): OAuthForApplication
+    {
+        $this->client_secret = $client_secret;
+        return $this;
+    }
+
+
     /**
      * @return array
      */
@@ -40,9 +75,9 @@ class OAuthForApplication
         $curl = new Curl();
         $curl->setUserAgent($_ENV['BASE_USER_AGENT']);
         $curl->post($url, [
-            'grant_type' => $_ENV['GRANT_TYPE'],
-            'client_id' => $_ENV['CLIENT_ID'],
-            'client_secret' => $_ENV['CLIENT_SECRET']
+            'grant_type' => $this->grant_type,
+            'client_id' => $this->client_id,
+            'client_secret' => $this->client_secret
         ]);
 
         return $curl->error
@@ -55,8 +90,8 @@ class OAuthForApplication
      */
     private function checkRequiredFields(): void
     {
-        if (empty($_ENV['GRANT_TYPE']) || empty($_ENV['CLIENT_ID']) || empty($_ENV['CLIENT_SECRET'])) {
-            throw new Exception('В env файле не указаны обязательные параметры для автормзации');
+        if (empty($this->grant_type) || empty($this->client_id) || empty($this->client_secret)) {
+            throw new Exception('Не заполнены обязательные свойства');
         }
     }
 }

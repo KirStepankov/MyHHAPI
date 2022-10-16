@@ -6,5 +6,10 @@
 use MyHHAPI\OAuth\OAuthForApplication;
 
 $oauth = new OAuthForApplication();
+
+$oauth->setGrantType('');
+$oauth->setClientId('');
+$oauth->setClientSecret('');
+
 $token = $oauth->getAccessToken();
 print_r($token);
