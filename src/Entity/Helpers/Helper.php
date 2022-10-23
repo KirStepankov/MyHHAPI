@@ -17,4 +17,9 @@ class Helper
             ? ['error' => true, 'data' => $dataOrExcep]
             : ['error' => false, 'data' => $dataOrExcep];
     }
+
+    public static function isRussian($text): bool|int
+    {
+        return preg_match('/[А-Яа-яЁё]/u', $text);
+    }
 }

@@ -100,11 +100,9 @@ abstract class MyHHAPIAbstract
      */
     protected function getQuery(): string
     {
-        $url = $this->formattedQueryArr(
+        return $this->formattedQueryArr(
             $this->arrQuery()
         );
-
-        return urlencode($url);
     }
 
     protected function arrayClear($arr)
@@ -133,11 +131,19 @@ abstract class MyHHAPIAbstract
         $query = '';
         foreach ($arr as $key => $item) {
             if (!is_array($item)) {
+                if (Helper::isRussian($item)) {
+                    $item = urlencode($item);
+                }
+
                 $query .= "&$key=$item";
                 continue;
             }
 
             foreach ($item as $value) {
+                if (Helper::isRussian($value)) {
+                    $value = urlencode($value);
+                }
+
                 $query .= "&$key=$value";
             }
         }
