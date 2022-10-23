@@ -84,8 +84,8 @@ abstract class MyHHAPIAbstract
     protected function requestWithGET($url): array
     {
         $curl = new Curl();
-        $curl->setHeader('User-Agent', $_ENV['BASE_USER_AGENT']);
-        $curl->get("{$_ENV['BASE_API']}$url");
+        $curl->setHeader('User-Agent', BASE_USER_AGENT);
+        $curl->get(BASE_API . $url);
 
         return $curl->error
             ? throw new Exception("Ошибка при запросе в АПИ HH: $curl->error_code")

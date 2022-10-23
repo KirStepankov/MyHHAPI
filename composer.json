@@ -23,7 +23,6 @@
         }
     },
     "require": {
-        "curl/curl": "^2.4",
-        "vlucas/phpdotenv": "^5.4"
+        "curl/curl": "^2.4"
     }
 }
