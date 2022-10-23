@@ -9,6 +9,9 @@ use MyHHAPI\Entity\Helpers\Helper;
 
 abstract class MyHHAPIAbstract
 {
+    const BASE_API = 'https://api.hh.ru/';
+    const BASE_USER_AGENT = 'User-Agent: MyHHAPI/1.0 (dev-stepankoff@mail.ru)';
+
     private MyHHAPIModel $model;
 
     /**
@@ -84,8 +87,8 @@ abstract class MyHHAPIAbstract
     protected function requestWithGET($url): array
     {
         $curl = new Curl();
-        $curl->setHeader('User-Agent', BASE_USER_AGENT);
-        $curl->get(BASE_API . $url);
+        $curl->setHeader('User-Agent', self::BASE_USER_AGENT);
+        $curl->get(self::BASE_API . $url);
 
         return $curl->error
             ? throw new Exception("Ошибка при запросе в АПИ HH: $curl->error_code")
