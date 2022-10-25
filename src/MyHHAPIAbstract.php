@@ -131,7 +131,7 @@ abstract class MyHHAPIAbstract
         $query = '';
         foreach ($arr as $key => $item) {
             if (!is_array($item)) {
-                if (Helper::isRussian($item)) {
+                if ($key == 'text' || Helper::isRussian($item)) {
                     $item = urlencode($item);
                 }
 
@@ -140,7 +140,7 @@ abstract class MyHHAPIAbstract
             }
 
             foreach ($item as $value) {
-                if (Helper::isRussian($value)) {
+                if ($key == 'text' || Helper::isRussian($value)) {
                     $value = urlencode($value);
                 }
 
