@@ -47,6 +47,16 @@ abstract class MyHHAPIAbstract
     }
 
     /**
+     * @param string $userAgent
+     * @return MyHHAPIAbstract
+     */
+    public function setUserAgent(string $userAgent): MyHHAPIAbstract
+    {
+        $this->userAgent = $userAgent;
+        return $this;
+    }
+
+    /**
      * @param array $fields
      * @return Exception|$this
      */

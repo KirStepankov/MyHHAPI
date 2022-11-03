@@ -17,4 +17,7 @@ interface MyHHAPIContract
      * @return MyHHAPIAbstract|Exception
      */
     public function setQueryFields(array $fields): MyHHAPIAbstract|Exception;
+
+    public function setToken(string $token): MyHHAPIAbstract;
+    public function setUserAgent(string $userAgent): MyHHAPIAbstract;
 }
