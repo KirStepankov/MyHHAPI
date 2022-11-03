@@ -10,7 +10,7 @@ class Vacancies extends VacanciesPropsAbstract implements MyHHAPIContract
     /**
      * @var string
      */
-    protected string $method = 'vacancies';
+    const METHOD = 'vacancies';
 
     /**
      * @var array|string[]
@@ -29,11 +29,7 @@ class Vacancies extends VacanciesPropsAbstract implements MyHHAPIContract
 
     protected function getBuildUrl(): string
     {
-        if (!empty($this->getQuery())) {
-            $this->method .= "/?{$this->getQuery()}";
-        }
-
-        return $this->method;
+        return !empty($this->getQuery()) ? self::METHOD . "/?{$this->getQuery()}" : self::METHOD;
     }
 
     //TODO Реализовать передачу координат
