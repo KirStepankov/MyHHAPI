@@ -121,7 +121,7 @@ abstract class MyHHAPIAbstract
         $curl->get(self::BASE_API . $url);
 
         return $curl->error
-            ? throw new Exception("Ошибка при запросе в АПИ HH: $curl->error_code")
+            ? throw new Exception("Ошибка при запросе в АПИ HH: $url", $curl->error_code)
             : json_decode($curl->response, true);
     }
 
