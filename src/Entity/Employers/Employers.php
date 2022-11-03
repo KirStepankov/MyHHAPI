@@ -9,7 +9,7 @@ class Employers extends EmployersPropsAbstract implements MyHHAPIContract
     /**
      * @var string
      */
-    protected string $method = 'employers';
+    const METHOD = 'employers';
 
     /**
      * @var array|string[]
@@ -29,11 +29,7 @@ class Employers extends EmployersPropsAbstract implements MyHHAPIContract
      */
     protected function getBuildUrl(): string
     {
-        if (!empty($this->getQuery())) {
-            $this->method .= "/?{$this->getQuery()}";
-        }
-
-        return $this->method;
+        return !empty($this->getQuery()) ? self::METHOD . "/?{$this->getQuery()}" : self::METHOD;
     }
 
     /**
