@@ -11,6 +11,8 @@ abstract class MyHHAPIAbstract
 {
     const BASE_API = 'https://api.hh.ru/';
     const BASE_USER_AGENT = 'User-Agent: MyHHAPI/1.0 (dev-stepankoff@mail.ru)';
+    private string $token;
+    private string $userAgent;
 
     private MyHHAPIModel $model;
 
@@ -32,6 +34,16 @@ abstract class MyHHAPIAbstract
     public function __construct()
     {
         $this->model = new MyHHAPIModel();
+    }
+
+    /**
+     * @param string $token
+     * @return MyHHAPIAbstract
+     */
+    public function setToken(string $token): MyHHAPIAbstract
+    {
+        $this->token = $token;
+        return $this;
     }
 
     /**
@@ -87,7 +99,15 @@ abstract class MyHHAPIAbstract
     protected function requestWithGET($url): array
     {
         $curl = new Curl();
-        $curl->setHeader('User-Agent', self::BASE_USER_AGENT);
+
+        if (!empty($this->userAgent)) {
+            $curl->setHeader('User-Agent', $this->userAgent);
+        }
+
+        if (!empty($this->token)) {
+            $curl->setHeader('Authorization', "Bearer $this->token");
+        }
+
         $curl->get(self::BASE_API . $url);
 
         return $curl->error
