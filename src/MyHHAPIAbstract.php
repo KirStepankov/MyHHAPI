@@ -108,23 +108,27 @@ abstract class MyHHAPIAbstract
      */
     protected function requestWithGET($url): array
     {
-        $curl = new Curl();
-
-        if (!empty($this->userAgent)) {
-            $curl->setHeader('User-Agent', $this->userAgent);
-        }
-
-        if (!empty($this->token)) {
-            $curl->setHeader('Authorization', "Bearer $this->token");
-        }
-
         $url = self::BASE_API . $url;
 
-        $curl->get($url);
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "User-Agent: $this->userAgent",
+            "Authorization: Bearer $this->token"
+        ));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HEADER, false);
 
-        return $curl->error
-            ? throw new Exception("Ошибка при запросе в АПИ HH: $url ($curl->error_code) ($curl->response)")
-            : json_decode($curl->response, true);
+        $response = curl_exec($ch);
+
+        if ($errno = curl_errno($ch)) {
+            $message = curl_strerror($errno);
+            return throw new Exception("Ошибка при запросе в АПИ HH: $url ($errno) ($message)");
+        }
+
+        curl_close($ch);
+
+        return json_decode($response, true);
     }
 
     /**

@@ -23,6 +23,7 @@
         }
     },
     "require": {
-        "curl/curl": "^2.4"
+        "curl/curl": "^2.4",
+      "ext-curl": "*"
     }
 }
