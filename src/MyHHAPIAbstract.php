@@ -118,7 +118,9 @@ abstract class MyHHAPIAbstract
             $curl->setHeader('Authorization', "Bearer $this->token");
         }
 
-        $curl->get(self::BASE_API . $url);
+        $url = self::BASE_API . $url;
+
+        $curl->get($url);
 
         return $curl->error
             ? throw new Exception("Ошибка при запросе в АПИ HH: $url", $curl->error_code)
