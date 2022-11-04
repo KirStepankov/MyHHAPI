@@ -9,7 +9,7 @@ class Vacancy extends VacancyPropsAbstract implements MyHHAPIContract
     /**
      * @var string
      */
-    protected string $method = 'vacancies';
+    const METHOD = 'vacancies';
 
     /**
      * @var array|string[]
@@ -31,7 +31,7 @@ class Vacancy extends VacancyPropsAbstract implements MyHHAPIContract
      */
     protected function getBuildUrl(): string
     {
-        return "$this->method/$this->idVacancy";
+        return self::METHOD . "/$this->idVacancy";
     }
 
     /**
